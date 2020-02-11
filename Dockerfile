@@ -11,7 +11,7 @@ RUN echo `id`
 
 #### LABEL
 LABEL MAINTAINER Suraj@in.ibm.com \
-      vendor: IBM \
+      vendor: \
       version: Version of the image \
       release: A number used to identify the specific build for this image \
       summary: A short overview of the application or component in this image \

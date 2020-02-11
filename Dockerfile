@@ -11,11 +11,11 @@ RUN echo `id`
 MAINTAINER Suraj@in.ibm.com 
 #### LABEL
 LABEL 
-      vendor: IBM \
-      version: Version of the image \
-      release: A number used to identify the specific build for this image \
-      summary: A short overview of the application or component in this image \
-      description: A long description of the application or component in this image
+      vendor= IBM \
+      version= Version of the image \
+      release= A number used to identify the specific build for this image \
+      summary= A short overview of the application or component in this image \
+      description= A long description of the application or component in this image
 
 #### Disabling "SU" permision 
 RUN usermod -s /sbin/nologin root

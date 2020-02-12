@@ -74,6 +74,8 @@ RUN wget http://mirror.linux-ia64.org/apache/tomcat/tomcat-${TOMCAT_MAJOR}/v${TO
 RUN tar -xvf apache-tomcat-${TOMCAT_VERSION}.tar.gz  && \
   rm apache-tomcat*.tar.gz && \
   mv apache-tomcat*/* ${CATALINA_HOME}
+ ####Adding License 
+ADD ./License.txt /
 
 RUN chmod +x ${CATALINA_HOME}/bin/*sh
 

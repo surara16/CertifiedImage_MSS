@@ -10,7 +10,7 @@ FROM registry.access.redhat.com/ubi8/ubi
 RUN echo `id`
 MAINTAINER Suraj@in.ibm.com 
 #### LABEL
-LABEL "name"="Suraj@in.ibm.com"
+LABEL "name"="Suraj@in.ibm.com" \
       "vendor"="IBM" \
       "version"="Version of the image" \
       "release"="A number used to identify the specific build for this image" \

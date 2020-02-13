@@ -76,7 +76,7 @@ RUN tar -xvf apache-tomcat-${TOMCAT_VERSION}.tar.gz  && \
   mv apache-tomcat*/* ${CATALINA_HOME}
  ####Adding License 
 RUN mkdir /licenses
-ADD ./License /licenses
+ADD ./licenses.txt /licenses
 
 RUN chmod +x ${CATALINA_HOME}/bin/*sh
 

@@ -7,8 +7,8 @@
 
 
 FROM registry.access.redhat.com/ubi8/ubi
-RUN echo `id`
 MAINTAINER Suraj@in.ibm.com 
+
 #### LABEL
 LABEL "name"="Suraj@in.ibm.com" \
       "vendor"="IBM" \
@@ -39,16 +39,11 @@ ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/bin:$CATALINA_HOME/scripts
 #### Install Oracle Java8
 ENV JAVA_VERSION 13.0.2
 ENV JAVA_VM 0.18.0
-###ENV JAVA_DL_HASH aeecf6d30d0c847db81d07793cf97e5dc44890c29366d7d9f8f9f397f6c52590
 
 
 WORKDIR /opt/java
-#RUN wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" \
-#http://download.oracle.com/otn-pub/java/jdk/${JAVA_BUILD}/${JAVA_DL_HASH}/jdk-${JAVA_VERSION}-linux-x64.tar.gz && \
 RUN wget https://github.com/AdoptOpenJDK/openjdk13-binaries/releases/download/jdk-13.0.2%2B8_openj9-0.18.0/OpenJDK13U-jdk_x64_linux_openj9_13.0.2_8_openj9-0.18.0.tar.gz
 
-### Changing Working Directory
-###WORKDIR /opt/java
 
 #### Coping JDK tar file
 ##COPY ./JavaTar/jdk-13.0.2_linux-x64_bin.tar.gz /opt/java
@@ -66,15 +61,17 @@ ENV TOMCAT_MAJOR 9
 ENV TOMCAT_VERSION 9.0.30
 ENV SCRIPT /opt/tomcat/apache-tomcat-${TOMCAT_VERSION}
 
-WORKDIR /opt/tomcat
+
 #### Downloading Tomact Tar File
+WORKDIR /opt/tomcat
 RUN wget http://mirror.linux-ia64.org/apache/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz
-#COPY ./apache-tomcat-9.0.11/apache-tomcat-9.0.11-deployer.tar.gz /opt/tomcat
+
 
 RUN tar -xvf apache-tomcat-${TOMCAT_VERSION}.tar.gz  && \
   rm apache-tomcat*.tar.gz && \
   mv apache-tomcat*/* ${CATALINA_HOME}
- ####Adding License 
+  
+####Adding License 
 RUN mkdir /licenses
 ADD ./licenses.txt /licenses
 
